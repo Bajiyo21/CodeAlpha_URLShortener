@@ -45,7 +45,7 @@ python manage.py migrate
 python manage.py runserver
 ```
 
-Open **http://127.0.0.1:8000/** in your browser.
+Open **code-alpha-url-shortener-weld.vercel.app** in your browser.
 
 ## 📸 Project Preview
 
