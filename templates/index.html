@@ -1,0 +1,162 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LinkVault - Premium URL Shortener</title>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    
+</head>
+<body>
+
+<div class="background">
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
+    <div class="blob blob3"></div>
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <div class="nav-logo">🔗 LinkVault</div>
+
+    <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#stats">Stats</a></li>
+    </ul>
+
+    <a href="/history/" class="dashboard-btn">
+        <span class="icon">📊</span>
+        Dashboard
+    </a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+
+    <div class="glass-card">
+
+        <span class="badge">
+            Premium URL Shortener
+        </span>
+
+        <h1>
+            Shorten URLs.<br>
+            <span>Share Smarter.</span>
+        </h1>
+
+        <p>
+            Transform long links into beautiful, secure and shareable URLs with a premium Django-powered URL shortener.
+        </p>
+
+        <div class="input-container">
+
+            <div class="input-wrapper">
+                <input type="url" id="urlInput" placeholder="Paste your long URL here...">
+            </div>
+
+            <button id="shortenBtn">⚡ Shorten URL</button>
+
+        </div>
+
+        <div id="result" class="result hidden">
+
+               <p class="result-title">Your Short URL</p>
+
+                <div class="result-box">
+
+                    <input
+                        type="text"
+                        id="shortUrl"
+                        readonly
+                    >
+
+                    <button id="copyBtn">
+                        📋 Copy
+                    </button>
+
+                </div>
+
+                <button id="visitBtn">
+                    🌐 Visit URL
+                </button>
+
+    <!-- QR Code Card -->
+
+            <div class="qr-card">
+
+                <p>Scan QR Code</p>
+
+                <img id="qrImage" src="" alt="QR Code">
+
+                <a id="downloadQR" download>
+                    Download QR Code
+                </a>
+
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- FEATURES -->
+<section class="features" id="features">
+
+    <h2>Why Choose LinkVault?</h2>
+
+    <div class="feature-grid">
+
+        <div class="feature-card">
+            <div class="feature-icon">⚡</div>
+            <h3>Fast URL Shortening</h3>
+            <p>Create short links instantly using Django REST APIs.</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">🔒</div>
+            <h3>Secure Storage</h3>
+            <p>SQLite securely stores every generated URL mapping.</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">📊</div>
+            <h3>Analytics Ready</h3>
+            <p>Track clicks and usage statistics in upcoming versions.</p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- STATS -->
+<section class="stats" id="stats">
+
+    <div class="stat-card">
+        <h2>500+</h2>
+        <p>URLs Shortened</p>
+    </div>
+
+    <div class="stat-card">
+        <h2>99.9%</h2>
+        <p>Uptime</p>
+    </div>
+
+    <div class="stat-card">
+        <h2>100%</h2>
+        <p>Django Powered</p>
+    </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <p> Built with using Django REST Framework and SQLite.
+    </p>
+</footer>
+
+<script src="{% static 'js/app.js' %}"></script>
+</body>
+</html>

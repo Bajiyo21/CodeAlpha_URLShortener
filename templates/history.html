@@ -1,0 +1,153 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LinkVault Dashboard</title>
+
+    <link rel="stylesheet" href="{% static 'css/history.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="background">
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
+</div>
+
+<nav class="navbar">
+
+    <div class="logo">
+        🔗 LinkVault Dashboard
+    </div>
+
+    <a href="/" class="back-btn">
+        ← Home
+    </a>
+
+</nav>
+
+<section class="dashboard">
+
+    <div class="header">
+
+        <h1>URL Analytics Dashboard</h1>
+
+        <p>Manage, monitor and analyze your shortened links.</p>
+
+    </div>
+
+    <!-- Statistics Cards -->
+
+    <div class="stats-grid">
+
+        <div class="stat-card blue">
+            <h2>{{ total_urls }}</h2>
+            <p>Total URLs</p>
+        </div>
+
+        <div class="stat-card purple">
+            <h2>{{ total_clicks }}</h2>
+            <p>Total Clicks</p>
+        </div>
+
+        <div class="stat-card cyan">
+            <h2>{{ active_links }}</h2>
+            <p>Active Links</p>
+        </div>
+
+        <div class="stat-card green">
+            <h2>99.9%</h2>
+            <p>Server Uptime</p>
+        </div>
+
+    </div>
+
+    <!-- Search -->
+
+    <div class="search-box">
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="🔍 Search original or short URL..."
+        >
+    </div>
+
+    <!-- URL Table -->
+
+    <div class="table-card">
+
+        <table id="historyTable">
+
+            <thead>
+
+                <tr>
+                    <th>Short URL</th>
+                    <th>Original URL</th>
+                    <th>Clicks</th>
+                    <th>Created</th>
+                    <th>Action</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+            {% for url in urls %}
+
+                <tr>
+
+                    <td>
+                        <span class="short-link">
+                            {{ request.get_host }}/{{ url.short_code }}
+                        </span>
+                    </td>
+
+                    <td class="original-url">
+                        {{ url.original_url }}
+                    </td>
+
+                    <td>
+                        <span class="click-badge">
+                            👆 {{ url.click_count }}
+                        </span>
+                    </td>
+
+                    <td>
+                        {{ url.created_at|date:"d M Y" }}
+                    </td>
+
+                    <td>
+
+                        <button
+                            class="copy-btn"
+                            data-link="http://{{ request.get_host }}/{{ url.short_code }}"
+                        >
+                            📋 Copy
+                        </button>
+
+                    </td>
+
+                </tr>
+
+            {% empty %}
+
+                <tr>
+                    <td colspan="5">No URLs created yet.</td>
+                </tr>
+
+            {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+<script src="{% static 'js/history.js' %}"></script>
+
+</body>
+</html>
